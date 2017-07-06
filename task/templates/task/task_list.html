@@ -1,0 +1,10 @@
+{% extends 'task/base.html' %}
+
+{% block content %}
+    {% for task in tasks %}
+              <div>
+                <p>Task: {{ task.task }}</p>
+                <p>Create: {{ task.create_date}} Must complete: {{ task.must_complete_before }}</p>
+              </div>
+    {% endfor %}
+{% endblock content %}
