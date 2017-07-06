@@ -1,31 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import CreateView
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 
 from .models import Note
-from .forms import UserRegistrationForm
+from .forms import TaskForm
 
-
-class RegistrationView(CreateView):
-    """ Custom view for registering students """
-    form_class = UserRegistrationForm
-    template_name = 'registration/register.html'
-    success_url = 'main'
-
-    def form_valid(self, form):
-        user = form['user'].save()
-        student = form['student'].save(commit=False)
-        student.user = User.objects.get(username=user.username)
-        student.save()
-        new_user = authenticate(username=form['user'].cleaned_data['username'],
-                                password=form['user'].cleaned_data['password1'])
-        login(self.request, new_user)
-        return redirect(reverse(self.success_url))
-
-
-
-
-def main(request):
-    return render(request, 'main.html', {})
 
 def task_list(request):
     tasks = Note.objects.filter(complete_value=False)
@@ -34,6 +12,20 @@ def task_list(request):
 def task_detail(request, pk):
     task = get_object_or_404(Note, pk=pk)
     return render(request, 'task/task_detail.html', {'task': task})
+
+def task_edit(request, pk):
+    task = get_object_or_404(Note, pk=pk)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.athor = request.user
+            task.create_date = timezone.now()
+            task.save()
+            return redirect('task_detail', pk=task.pk)
+    else:
+        form = TaskForm(instance=task)
+    return render(request, 'task/task_edit.html', {'form': form})
 
 def task_complete_list(request):
     tasks = Note.objects.filter(complete_value=True)
