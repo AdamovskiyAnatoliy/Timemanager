@@ -3,7 +3,7 @@
 
   <dir>
     <p>Task: {{ task.task }}</p>
-      <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}"><span class="glyphicon glyphicon-pencil"></span>AAAA</a>
+      <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
     <p>Create: {{ task.create_date}}
     <p>Must complete: {{ task.must_complete_before }}</p>
     <a href="{% url 'task_detail' pk=task.pk %}"><button class="btn">How much time do you have:{{ task.you_have_time }}</button></a>
