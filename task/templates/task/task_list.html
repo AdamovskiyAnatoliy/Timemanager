@@ -2,7 +2,11 @@
 
 {% block content %}
 <a class="btn btn-default" href="{% url 'task_complete_list' %}"><span class="glyphicon glyphicon-ok">My complete task</span></a>
-<h2 class="sub-header">List task</h2>
+<h2 class="sub-header">List task
+            {% if user.is_authenticated %}
+              <a href="{% url 'task_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
