@@ -3,7 +3,7 @@
 {% block content %}
     {% for task in tasks %}
               <div>
-                <p>Task: {{ task.task }}</p>
+                <p><a href="{% url 'task_detail' pk=task.pk %}">Task: {{ task.task }}</a></p>
                 <p>Create: {{ task.create_date}} Must complete: {{ task.must_complete_before }}</p>
               </div>
     {% endfor %}
