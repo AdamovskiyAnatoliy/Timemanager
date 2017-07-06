@@ -14,7 +14,7 @@ class Note(models.Model):
         self.save()
 
     def you_have_time(self):
-        return self.must_complete_before - timezone.now() 
+        return self.must_complete_before - timezone.now()
 
 
     def __str__(self):
