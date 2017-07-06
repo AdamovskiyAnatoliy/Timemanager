@@ -13,5 +13,9 @@ class Note(models.Model):
         self.must_complete_value = True
         self.save()
 
+    def you_have_time(self):
+        return self.must_complete_before - timezone.now() 
+
+
     def __str__(self):
         return self.task

@@ -1,12 +1,10 @@
 {% extends 'task/base.html' %}
 
 {% block content %}
-    <h2><a href="{% url 'task_complete_list' %}">My complete task </a></h2>
-
     {% for task in tasks %}
               <div>
                 <p><a href="{% url 'task_detail' pk=task.pk %}">Task: {{ task.task }}</a></p>
-                <p>Create: {{ task.create_date}} Must complete: {{ task.must_complete_before }}</p>
+                <p>Create: {{ task.create_date}} Time complete: {{ task.must_complete_before }}</p>
               </div>
     {% endfor %}
 {% endblock content %}
