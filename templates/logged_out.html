@@ -3,8 +3,8 @@
 {% block title %}See you!{% endblock %}
 
 {% block content %}
-  <h2>Logged out</h2>
-  <p>You have been successfully logged out.</p>
-  <p><a href="{% url 'login' %}">Log in</a> again.</p>
-  <p><a href="{% url 'signup' %}">Segn up</a></p>
+  <h1>Log in to hack your tasks</h1>
+  <div>
+    <a href="{% url 'login' %}"><button  type="button" class="btn btn-success">Log in</button></a>
+  </div>
 {% endblock %}

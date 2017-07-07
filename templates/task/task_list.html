@@ -4,7 +4,7 @@
 
             {% if user.is_authenticated %}
             <h2 class="sub-header">List task
-              <a href="{% url 'task_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
 
 </h2>
 <div class="table-responsive">
@@ -29,7 +29,8 @@
     </tbody>
   </table>
 </div>
-<a class="btn btn-default" href="{% url 'task_complete_list' %}"><span class="glyphicon glyphicon-ok">My complete tasks</span></a>
+<a href="{% url 'task_new' %}" class="top-menu"><button type="button" class="btn btn-success">Add task</button></a>
+<a href="{% url 'task_complete_list' %}"><button type="button" class="btn btn-outline-success">My complete tasks</button></a>
 
 {% endif %}
 
