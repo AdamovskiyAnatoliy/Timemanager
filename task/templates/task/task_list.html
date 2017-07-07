@@ -1,7 +1,6 @@
 {% extends 'task/base.html' %}
 
 {% block content %}
-<a class="btn btn-default" href="{% url 'task_complete_list' %}"><span class="glyphicon glyphicon-ok">My complete task</span></a>
 <h2 class="sub-header">List task
             {% if user.is_authenticated %}
               <a href="{% url 'task_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
@@ -14,6 +13,7 @@
         <th>Task</th>
         <th>Create</th>
         <th>Must complete</th>
+        <th>Complete</td>
       </tr>
     </thead>
     <tbody>
@@ -22,11 +22,14 @@
           <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
           <td>{{ task.create_date}} </td>
           <td>{{ task.must_complete_before }}</td>
+          <td>{{ task.complete_value }}</td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
+<a class="btn btn-default" href="{% url 'task_complete_list' %}"><span class="glyphicon glyphicon-ok">My complete tasks</span></a>
+
 
 
 

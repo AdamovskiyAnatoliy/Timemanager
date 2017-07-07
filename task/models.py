@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Note(models.Model):
     author = models.ForeignKey('auth.User')
-    task = models.CharField(max_length=200)
+    task = models.CharField(max_length=20)
     create_date = models.DateTimeField(default=timezone.now)
     must_complete_before = models.DateTimeField()
     complete_value = models.BooleanField(default=False)

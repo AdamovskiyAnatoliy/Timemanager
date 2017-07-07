@@ -1,10 +1,33 @@
 {% extends 'task/base.html' %}
 
 {% block content %}
-    {% for task in tasks %}
-              <div>
-                <p><a href="{% url 'task_detail' pk=task.pk %}">Task: {{ task.task }}</a></p>
-                <p>Create: {{ task.create_date}} Time complete: {{ task.must_complete_before }}</p>
-              </div>
-    {% endfor %}
+
+
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Create</th>
+        <th>Must complete</th>
+        <th>Complete</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+        <tr>
+          <td>{{ task.task }}</td>
+          <td>{{ task.create_date}} </td>
+          <td>{{ task.must_complete_before }}</td>
+          <td>{{ task.complete_value }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+
 {% endblock content %}
