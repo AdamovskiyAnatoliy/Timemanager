@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Task</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="/">Timemanager</a>
+          </div>
+          <form class="navbar-form navbar-right">
+            {% if user.is_authenticated %}
+                  <button type="submit" class="btn btn-link"><a href="{% url 'logout' %}">Log out</a></button>
+            {% else %}
+                  <button type="submit" class="btn btn-success"><a href="{% url 'login' %}">Log in</a></button>
+            {% endif %}
+
+          </form>
+        </div><!-- /.container -->
+      </nav><!-- /.navbar -->
+        <div class="jumbotron">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+      </div>
+    </body>
+</html>

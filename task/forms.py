@@ -5,4 +5,4 @@ from .models import Note
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('task','must_complete_before',)
+        fields = ('must_complete_before','task')
