@@ -20,7 +20,7 @@
           <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
           <td>{{ task.create_date}} </td>
           <td>{{ task.must_complete_before }}</td>
-          <td>{{ task.complete_value }}</td>
+        <td><a href="{% url 'task_detail_complete' pk=task.pk %}"><button type="button" class="btn btn-success">Start</button></a></td>
         </tr>
       {% endfor %}
     </tbody>

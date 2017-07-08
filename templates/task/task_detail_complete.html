@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <dir>
+    <p>Task: {{ task.task }}</p>
+    <a href="{% url 'task_complete_list' %}"><button type="button" class="btn btn-outline-success">My complete tasks</button></a>
+      <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}">Edit</a>
+
+
+
+
+
+      {% if task.complete_value %}
+          {{ task.un_complete_task }}
+      {% else %}
+          {{task.complete_task }}
+      {% endif %}
+
+
+
+    <p>Create: {{ task.create_date}}</p>
+    <p>Must complete: {{ task.must_complete_before }}</p>
+    <p>Complete: {{  task.complete_value  }}</p>
+
+  <dir>
+{% endblock %}
