@@ -2,11 +2,8 @@
 
 {% block content %}
 
-            {% if user.is_authenticated %}
-            <h2 class="sub-header">List task
-
-
-</h2>
+{% if user.is_authenticated %}
+<h2 class="sub-header">List task</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -18,14 +15,18 @@
       </tr>
     </thead>
     <tbody>
+
       {% for task in tasks %}
+
         <tr>
           <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
           <td>{{ task.create_date}} </td>
           <td>{{ task.must_complete_before }}</td>
-          <td><a href="{% url 'task_detail_complete' pk=task.pk%}"><button type="button" class="btn btn-success">End</button></a></td>
+          <td><a href="{% url 'task_detail_complete' pk=task.pk%}"><button type="button" class="btn btn-success btn-sm">End</button></a></td>
         </tr>
+
       {% endfor %}
+
     </tbody>
   </table>
 </div>
@@ -33,6 +34,5 @@
 <a href="{% url 'task_complete_list' %}"><button type="button" class="btn btn-outline-success">My complete tasks</button></a>
 
 {% endif %}
-
 
 {% endblock content %}
