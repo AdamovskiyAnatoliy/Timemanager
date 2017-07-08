@@ -17,7 +17,7 @@
     <tbody>
       {% for task in tasks %}
         <tr>
-          <td>{{ task.task }}</td>
+          <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
           <td>{{ task.create_date}} </td>
           <td>{{ task.must_complete_before }}</td>
           <td>{{ task.complete_value }}</td>
@@ -26,6 +26,7 @@
     </tbody>
   </table>
 </div>
+<a href="{% url 'task_list' %}"><button type="button" class="btn btn-outline-success">Be back</button></a>
 
 
 

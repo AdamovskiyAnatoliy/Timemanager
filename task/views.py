@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
+
 from .models import Note
 from .forms import TaskForm
 
@@ -23,7 +24,7 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def task_list(request):
-    tasks = Note.objects.filter(complete_value=False)
+    tasks = Note.objects.filter(complete_value=False, author=request.user )
     return render(request, 'task/task_list.html', {'tasks': tasks})
 
 def task_detail(request, pk):
@@ -45,6 +46,8 @@ def task_new(request):
 
 
 
+
+
 def task_edit(request, pk):
     task = get_object_or_404(Note, pk=pk)
     if request.method == "POST":
@@ -58,6 +61,13 @@ def task_edit(request, pk):
     else:
         form = TaskForm(instance=task)
     return render(request, 'task/task_edit.html', {'form': form})
+
+
+
+
+
+
+
 
 def task_complete_list(request):
     tasks = Note.objects.filter(complete_value=True)

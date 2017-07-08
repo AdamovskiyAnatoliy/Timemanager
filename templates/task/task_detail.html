@@ -3,9 +3,16 @@
 
   <dir>
     <p>Task: {{ task.task }}</p>
-      <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a href="{% url 'task_complete_list' %}"><button type="button" class="btn btn-outline-success">My complete tasks</button></a>
+      <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}">Edit</a>
+    {% if task.complete_value %}
+      <a href="{% url 'task_detail' pk=task.pk %}"><button class="btn btn-success" onclick="{{ task.un_complete_task }}">End  </button></a>
+    {% else %}
+      <a href="{% url 'task_detail' pk=task.pk %}">{{un_complete_task}}<button class="btn btn-success" onclick="{{ task.complete_task }}">End </button></a>
+    {% endif %}
     <p>Create: {{ task.create_date}}
     <p>Must complete: {{ task.must_complete_before }}</p>
+    <p>Complete: {{  task.complete_value  }}</p>
     <a href="{% url 'task_detail' pk=task.pk %}"><button class="btn">How much time do you have:{{ task.you_have_time }}</button></a>
   <dir>
 {% endblock %}
