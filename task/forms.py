@@ -5,4 +5,9 @@ from .models import Note
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('must_complete_before','task')
+        fields = ('task', 'must_complete_before',)
+    def __init__(self, *args, **kwargs):
+        super(TaskForm, self).__init__(*args, **kwargs)
+
+        self.fields['task'].widget.attrs['class'] = 'form-control '
+        self.fields['must_complete_before'].widget.attrs['class'] = 'form-control'

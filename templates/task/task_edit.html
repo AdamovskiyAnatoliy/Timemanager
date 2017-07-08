@@ -1,9 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
+
     <h1>New post</h1>
     <form method="POST" >{% csrf_token %}
-        {{ form.as_p }}
+      {{ form.non_field_errors }}
+      <div class="form-group row">
+        {{ form.task.errors }}
+        <label for="{{ form.task.id_for_label }}" class="col-2 col-form-label">Text</label>
+        <div class="col-10">
+            {{ form.task }}
+        </div>
+      </div>
+
+      <div class="form-group row">
+
+        <label for="{{ form.must_complete_before.id_for_label }}" class="col-2 col-form-label">Date and time</label>
+        <div class="col-10">{{ form.must_complete_before }}</div>
+        {{ form.must_complete_before.errors }}
+      </div>
+
+
+
+
+
+
+
+
+
+
+
         <button type="submit" class="btn btn-success">Save</button>
     </form>
 {% endblock %}

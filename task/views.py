@@ -60,7 +60,6 @@ def task_edit(request, pk):
         if form.is_valid():
             task = form.save(commit=False)
             task.author = request.user
-            task.create_date = timezone.now()
             task.save()
             return redirect('task_detail', pk=task.pk)
     else:
