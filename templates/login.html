@@ -4,32 +4,18 @@
 
 {% block content %}
 {% load widget_tweaks %}
-
-
 <div class="container theme-showcase login-container" role="main">
-<div class="jumbotron">
-  <div class="login-form">
-  <form method="post">
-    {% csrf_token %}
-
-
-
-
-    {{ form.non_field_errors }}
-
-    Username: {{ form.username|add_class:"form-control" }}
-        Password: {{ form.password|add_class:"form-control" }}
-    <button  type="submit" class="btn btn-success">Log in</button></a>
-  </form>
-  <p>Not member   <a href="{% url 'signup' %}"><button  type="button" class="btn btn-link">Segn up</button></a></p>
+  <div class="jumbotron-r">
+    <div class="login-form">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <p>  Username: {{ form.username|add_class:"form-control" }}</p>
+        <p>  Password: {{ form.password|add_class:"form-control" }}</p>
+        <button  type="submit" class="btn btn-success">Log in</button>
+        <a href="{% url 'signup' %}"><button  type="button" class="btn btn-link">Register</button></a>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
-
-
-
-
-<div>
-  <a href="{% url 'login' %}"><button  type="button" class="btn btn-success">Log in</button></a>
-</div>
-<div>
-  <a href="{% url 'signup' %}"><button  type="button" class="btn btn-link">Segn up</button></a>
-</div>
