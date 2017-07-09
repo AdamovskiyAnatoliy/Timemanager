@@ -61,7 +61,7 @@ def task_edit(request, pk):
             task = form.save(commit=False)
             task.author = request.user
             task.save()
-            return redirect('task_detail', pk=task.pk)
+            return redirect('task_list')
     else:
         form = TaskForm(instance=task)
     return render(request, 'task/task_edit.html', {'form': form})

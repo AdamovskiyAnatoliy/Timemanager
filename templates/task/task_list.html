@@ -9,6 +9,7 @@
     <thead>
       <tr>
         <th>Task</th>
+        <th>Details</th>
         <th>Create</th>
         <th>Must complete</th>
         <th>Have time</th>
@@ -24,7 +25,8 @@
       {% else %}
         <tr>
       {% endif %}
-          <td ><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
+          <td >{{ task.task }}</td>
+          <td><a href="{% url 'task_edit' pk=task.pk %}"><button type="button" class="btn btn-outline-success btn-sm">Edit</button></a></td>
           <td>{{ task.create_date}} </td>
           <td>{{ task.must_complete_before }}</td>
           <td>{{ task.you_have_time }}
