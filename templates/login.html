@@ -5,11 +5,12 @@
 {% block content %}
 {% load widget_tweaks %}
 <div class="container theme-showcase login-container" role="main">
-  <div class="jumbotron-r">
+
     <div class="login-form">
       <form method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
+              <div class="login-fields">
         <p>  Username: {{ form.username|add_class:"form-control" }}</p>
         <p>  Password: {{ form.password|add_class:"form-control" }}</p>
         <button  type="submit" class="btn btn-success">Log in</button>

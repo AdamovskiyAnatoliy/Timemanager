@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime, timedelta
 
 
 class Note(models.Model):
@@ -29,8 +30,13 @@ class Note(models.Model):
 
 
     def you_have_time(self):
-        return self.must_complete_before - timezone.now()
+        return str(self.must_complete_before - timezone.now())[:-7]
 
+    def check_you_heve_time(self):
+        if self.you_have_time()[0] == '-':
+            return True
+        else:
+            return False
 
 
     def __str__(self):
