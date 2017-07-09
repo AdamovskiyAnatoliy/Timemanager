@@ -3,14 +3,22 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+{% load widget_tweaks %}
 
 
-<div class="container theme-showcase" role="main">
+<div class="container theme-showcase login-container" role="main">
 <div class="jumbotron">
-  <div class="container">
+  <div class="login-form">
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+
+
+
+
+    {{ form.non_field_errors }}
+
+    Username: {{ form.username|add_class:"form-control" }}
+        Password: {{ form.password|add_class:"form-control" }}
     <button  type="submit" class="btn btn-success">Log in</button></a>
   </form>
   <p>Not member   <a href="{% url 'signup' %}"><button  type="button" class="btn btn-link">Segn up</button></a></p>
