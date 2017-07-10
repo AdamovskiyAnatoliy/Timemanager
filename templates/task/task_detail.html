@@ -3,8 +3,6 @@
 
   <dir>
     <p>Task: {{ task.task }}</p>
-    <a href="{% url 'task_complete_list' %}"><button type="button" class="btn btn-outline-success">My complete tasks</button></a>
-      <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}">Edit</a>
 
 
     <p>Create: {{ task.create_date|date:"D d M Y "}}{{ task.create_date|time:"H:i:s" }}</p>
@@ -15,5 +13,9 @@
                 <script>
                   timer('{{ task.must_complete_before|date:"D d M Y " }}{{task.must_complete_before|time:"H:i:s"}}', '{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}');
                 </script></p>
+    <a href="{% url 'task_list' %}"><button type="button" class="btn btn-outline-success">Be back</button></a>
+
+    <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}">Edit</a>
+
   <dir>
 {% endblock %}

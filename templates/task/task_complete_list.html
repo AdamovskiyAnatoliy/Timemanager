@@ -17,7 +17,7 @@
     <tbody>
       {% for task in tasks %}
         <tr class="table-success">
-          <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
+          <td>{{ task.task }}</td>
           <td>{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}} </td>
           <td>{{ task.must_complete_before|date:"D d M Y " }}{{task.must_complete_before|time:"H:i:s"}}</td>
           <td>{{ task.complete_date|date:"D d M Y " }}{{task.complete_date|time:"H:i:s"}}</td>

@@ -35,7 +35,6 @@ def task_detail(request, pk):
     return render(request, 'task/task_detail.html', {'task': task})
 
 
-
 def task_detail_complete(request, pk):
     task = get_object_or_404(Note, pk=pk)
     return render(request, 'task/task_detail_complete.html', {'task' : task})
@@ -55,7 +54,6 @@ def task_new(request):
     return render(request, 'task/task_edit.html', {'form': form})
 
 
-
 def task_edit(request, pk):
     task = get_object_or_404(Note, pk=pk)
     if request.method == "POST":
@@ -70,14 +68,6 @@ def task_edit(request, pk):
     return render(request, 'task/task_edit.html', {'form': form})
 
 
-
-
-
-
-
-
 def task_complete_list(request):
-    tasks = Note.objects.filter(complete_value=True)
+    tasks = Note.objects.filter(complete_value=True,  author=request.user )
     return render(request, 'task/task_complete_list.html', {'tasks': tasks})
-
-# Create your views here.
