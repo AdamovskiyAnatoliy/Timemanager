@@ -24,8 +24,11 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def task_list(request):
-    tasks = Note.objects.filter(complete_value=False, author=request.user )
-    return render(request, 'task/task_list.html', {'tasks': tasks})
+    if str(request.user) == 'AnonymousUser':
+        return render(request, 'home.html', {})
+    else:
+        tasks = Note.objects.filter(complete_value=False, author=request.user )
+        return render(request, 'task/task_list.html', {'tasks': tasks})
 
 def task_detail(request, pk):
     task = get_object_or_404(Note, pk=pk)
