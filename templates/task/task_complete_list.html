@@ -17,7 +17,10 @@
         <tr class="table-success">
           <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
           <td>{{ task.create_date}} </td>
-          <td>{{ task.must_complete_before }}</td>
+          <td>
+            <p id="{{ task.task }}"></p>
+            <script>timer('{{task.must_complete_before }}', '{{ task.task }}');</script>
+          </td>
         <td><a href="{% url 'task_detail_complete' pk=task.pk %}"><button type="button" class="btn btn-success btn-sm">Start</button></a></td>
         </tr>
       {% endfor %}

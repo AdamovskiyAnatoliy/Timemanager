@@ -29,10 +29,11 @@
           <td><a href="{% url 'task_edit' pk=task.pk %}"><button type="button" class="btn btn-outline-success btn-sm">Edit</button></a></td>
           <td>{{ task.create_date}} </td>
           <td>{{task.must_complete_before }}
-          <td>  <p id="{{ task.task }}"></p>
-              <script>timer('{{task.must_complete_before }}', '{{ task.task }}');</script>
-
-              </td></td>
+          <td>{{ task.you_have_time }}</td>
+          <td>
+            <p id="{{ task.task }}"></p>
+            <script>timer('{{task.must_complete_before }}', '{{ task.task }}');</script>
+          </td>
           <td><a href="{% url 'task_detail_complete' pk=task.pk%}"><button type="button" class="btn btn-success btn-sm">End</button></a></td>
         </tr>
 
