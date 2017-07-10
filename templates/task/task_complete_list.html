@@ -8,7 +8,9 @@
       <tr>
         <th>Task</th>
         <th>Create</th>
+        <th>Time complete</th>
         <th>Must complete</th>
+        <th>It was completed</th>
         <th>Complete</td>
       </tr>
     </thead>
@@ -16,14 +18,16 @@
       {% for task in tasks %}
         <tr class="table-success">
           <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
-          <td>{{ task.create_date}} </td>
+          <td>{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}} </td>
+          <td>{{ task.must_complete_before|date:"D d M Y " }}{{task.must_complete_before|time:"H:i:s"}}</td>
+          <td>{{ task.complete_date|date:"D d M Y " }}{{task.complete_date|time:"H:i:s"}}</td>
           <td>
             <p id="{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}"></p>
             <script>
-              timer('{{ task.must_complete_before|date:"D d M Y " }}{{task.must_complete_before|time:"H:i:s"}}', '{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}');
+              timer('{{ task.complete_date|date:"D d M Y " }}{{task.complete_date|time:"H:i:s"}}', '{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}');
             </script>
           </td>
-        <td><a href="{% url 'task_detail_complete' pk=task.pk %}"><button type="button" class="btn btn-success btn-sm">Start</button></a></td>
+          <td><a href="{% url 'task_detail_complete' pk=task.pk %}"><button type="button" class="btn btn-success btn-sm">Start</button></a></td>
         </tr>
       {% endfor %}
     </tbody>

@@ -7,26 +7,13 @@
       <a class="btn btn-default" href="{% url 'task_edit' pk=task.pk %}">Edit</a>
 
 
-
-
-
-  <!--    {% if task.complete_value %}
-
-
-
-            <a href="{% url 'task_detail' pk=task.pk %}"><button class="btn btn-success" onclick="{{ task.complete_task }}">End </button></a>
-
-    {% else %}
-          <a href="{% url 'task_detail' pk=task.pk %}"><button class="btn btn-success" onclick="{{ task.un_complete_task }}">End  </button></a>
-
-    {% endif %}
-
-{{ task.complete_task }}
--->
-
-    <p>Create: {{ task.create_date}}
-    <p>Must complete: {{ task.must_complete_before }}</p>
+    <p>Create: {{ task.create_date|date:"D d M Y "}}{{ task.create_date|time:"H:i:s" }}</p>
+    <p>Must complete: {{ task.must_complete_before|date:"D d M Y " }}{{task.must_complete_before|time:"H:i:s"}}</p>
     <p>Complete: {{  task.complete_value  }}</p>
-    <a href="{% url 'task_detail' pk=task.pk %}"><button class="btn">How much time do you have:{{ task.you_have_time }}</button></a>
+    <p id="{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}">Have time
+    <p id="{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}"></p>
+                <script>
+                  timer('{{ task.must_complete_before|date:"D d M Y " }}{{task.must_complete_before|time:"H:i:s"}}', '{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}');
+                </script></p>
   <dir>
 {% endblock %}

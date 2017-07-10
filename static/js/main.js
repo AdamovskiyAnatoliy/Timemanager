@@ -1,4 +1,5 @@
 function timer(a, b){
+
     var countDownDate = new Date(a).getTime();
     var x = setInterval(function() {
       var now = new Date().getTime();
@@ -9,6 +10,10 @@ function timer(a, b){
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
       document.getElementById(b).innerHTML = days + "d " + hours + "h "
       + minutes + "m " + seconds + "s ";
+      if (distance<0){
+        document.getElementById(b).innerHTML = ++days + "d " + ++hours + "h "
+        + ++minutes + "m " + ++seconds + "s ";
+      }
     }, 1000);
 
 }

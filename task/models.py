@@ -25,6 +25,7 @@ class Note(models.Model):
 
     def un_complete_task(self):
         self.complete_value = False
+
         self.save()
         return ''
 
