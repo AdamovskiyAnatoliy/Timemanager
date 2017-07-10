@@ -1,5 +1,4 @@
-function timer(a, b){
-
+function timer(a, b
     var countDownDate = new Date(a).getTime();
     var x = setInterval(function() {
       var now = new Date().getTime();
@@ -15,5 +14,4 @@ function timer(a, b){
         + ++minutes + "m " + ++seconds + "s ";
       }
     }, 1000);
-
 }
