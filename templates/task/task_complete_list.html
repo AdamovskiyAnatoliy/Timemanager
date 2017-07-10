@@ -18,8 +18,10 @@
           <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.task }}</a></td>
           <td>{{ task.create_date}} </td>
           <td>
-            <p id="{{ task.task }}"></p>
-            <script>timer('{{task.must_complete_before }}', '{{ task.task }}');</script>
+            <p id="{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}"></p>
+            <script>
+              timer('{{ task.must_complete_before|date:"D d M Y " }}{{task.must_complete_before|time:"H:i:s"}}', '{{ task.create_date|date:"D d M Y " }}{{task.create_date|time:"H:i:s"}}');
+            </script>
           </td>
         <td><a href="{% url 'task_detail_complete' pk=task.pk %}"><button type="button" class="btn btn-success btn-sm">Start</button></a></td>
         </tr>
