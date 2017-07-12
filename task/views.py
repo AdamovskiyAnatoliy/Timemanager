@@ -27,8 +27,13 @@ def task_list(request):
     if str(request.user) == 'AnonymousUser':
         return render(request, 'home.html', {})
     else:
-        tasks = Note.objects.filter(complete_value=False, author=request.user )
+        tasks = Note.objects.exclude(complete_value=True, author=request.user )
         return render(request, 'task/task_list.html', {'tasks': tasks})
+
+def task_complete_list(request):
+    tasks = Note.objects.filter(complete_value=False,  author=request.user )
+    return render(request, 'task/task_complete_list.html', {'tasks': tasks})
+
 
 def task_detail(request, pk):
     task = get_object_or_404(Note, pk=pk)
@@ -66,8 +71,3 @@ def task_edit(request, pk):
     else:
         form = TaskForm(instance=task)
     return render(request, 'task/task_edit.html', {'form': form})
-
-
-def task_complete_list(request):
-    tasks = Note.objects.filter(complete_value=True,  author=request.user )
-    return render(request, 'task/task_complete_list.html', {'tasks': tasks})
