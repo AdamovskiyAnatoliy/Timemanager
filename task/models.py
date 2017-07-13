@@ -39,6 +39,7 @@ class Note(models.Model):
 class Dream(models.Model):
     class Meta:
         ordering = ['priority_dream']
+    author = models.ForeignKey('auth.User',default='')
     my_deream = models.CharField(max_length=40)
     detail_deram = models.TextField(blank=True)
     priority_dream = models.DecimalField(max_digits=4, decimal_places=2)

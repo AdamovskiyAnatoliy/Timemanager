@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
 
-from .models import Note
+from .models import Note, Dream
 from .forms import TaskForm
 
 
@@ -43,6 +43,10 @@ def task_detail(request, pk):
 def task_detail_complete(request, pk):
     task = get_object_or_404(Note, pk=pk)
     return render(request, 'task/task_detail_complete.html', {'task' : task})
+
+def dreams_list(request):
+    dreams = Dream.objects.all()
+    return render(request, 'dream/dreams_list.html', {'dreams' : dreams})
 
 
 def task_new(request):
