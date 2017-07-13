@@ -31,7 +31,7 @@ def task_list(request):
         return render(request, 'task/task_list.html', {'tasks': tasks})
 
 def task_complete_list(request):
-    tasks = Note.objects.filter(complete_value=False,  author=request.user )
+    tasks = Note.objects.filter(complete_value=False,  author=request.user )[0:5]
     return render(request, 'task/task_complete_list.html', {'tasks': tasks})
 
 

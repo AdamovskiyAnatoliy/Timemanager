@@ -11,10 +11,6 @@ class Note(models.Model):
     create_date = models.DateTimeField(default=timezone.now)
     must_complete_before = models.DateTimeField()
     complete_date = models.DateTimeField(default=timezone.now)
-
-    #help_text="Please use the following format: <em>YYYY-MM-DD</em>."
-    #class DurationField(**options)
-#Поля для хранения периодов времени
     complete_value = models.BooleanField(default=False)
 
     def complete_task(self):
@@ -25,10 +21,8 @@ class Note(models.Model):
 
     def un_complete_task(self):
         self.complete_value = False
-
         self.save()
         return ''
-
 
     def you_have_time(self):
         return str(self.must_complete_before - timezone.now())[:-7]
@@ -39,6 +33,15 @@ class Note(models.Model):
         else:
             return False
 
-
     def __str__(self):
         return self.task
+
+class Dream(models.Model):
+    class Meta:
+        ordering = ['priority_dream']
+    my_deream = models.CharField(max_length=40)
+    detail_deram = models.TextField(blank=True)
+    priority_dream = models.DecimalField(max_digits=4, decimal_places=2)
+
+    def __str__(self):
+        return self.my_deream
