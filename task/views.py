@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 from .models import Note, Dream
-from .forms import TaskForm
+from .forms import TaskForm, DreamForm
 
 
 from django.contrib.auth import login, authenticate
@@ -57,10 +57,24 @@ def task_new(request):
             task.author = request.user
             task.create_date = timezone.now()
             task.save()
-            return redirect('task_detail', pk=task.pk)
     else:
+        return redirect('task_detail', pk=task.pk)
         form = TaskForm()
-    return render(request, 'task/task_edit.html', {'form': form})
+        return render(request, 'task/task_edit.html', {'form' : form})
+
+def dreams_new(request):
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            dream = form.save(commit=False)
+            dream.author = request.user
+            dream.save()
+            return redirect('dream_detail', pk=dream.pk)
+    else:
+        form = DreamForm()
+        return render(request, 'dream/dream_edit.html', {'form' : form})
+
+
 
 
 def task_edit(request, pk):
