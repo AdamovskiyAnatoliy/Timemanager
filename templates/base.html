@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li>
-        <a href="{% url 'dreams_list' %}"><button type="button" class="btn btn-outline-">Dreams</button></a>
+        <a href="{% url 'dreams_list' %}"><button type="button" class="btn btn-outline-secondary">Dreams</button></a>
         <div class="dropdown-menu" aria-labelledby="dropdown01"></div>
       </li>
     </ul>
@@ -30,8 +30,8 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Timemanager</a>
       </div>
-    </div><!-- /.container -->
-  </nav><!-- /.navbar -->
+    </div>
+  </nav>
   <div class="jumbotron">
     {% block content %}
     {% endblock %}

@@ -17,11 +17,11 @@ class TaskForm(forms.ModelForm):
 class DreamForm(forms.ModelForm):
     class Meta:
         model = Dream
-        fields = ('my_deream', 'detail_deram', 'priority_dream',)
+        fields = ('detail_dream', 'priority_dream', 'my_dream', )
 
     def __init__(self, *args, **kwargs):
         super(DreamForm, self).__init__(*args, **kwargs)
 
-        self.fields['my_deream'].widget.attrs['class'] = 'form-control'
-        self.fields['detail_deram'].widget.attrs['class'] = 'form-control'
+        self.fields['my_dream'].widget.attrs['class'] = 'form-control'
+        self.fields['detail_dream'].widget.attrs['class'] = 'form-control'
         self.fields['priority_dream'].widget.attrs['class'] = 'form-control'

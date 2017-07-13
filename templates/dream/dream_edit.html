@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>New post</h1>
+
+    <form method="POST" >
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <div class="form-group row">
+        {{ form.my_dream.errors }}
+        <label for="{{ form.task.id_for_label }}" class="col-2 col-form-label">My dream</label>
+        <div class="col-10">
+            {{form.my_dream }}
+        </div>
+      </div>
+
+      <div class="form-group row" >
+        {{ form.detail_dream.errors }}
+        <label for="{{ form.must_complete_before.id_for_label }}" class="col-2 col-form-label" >Detail dream</label>
+        <div class="col-10" >
+            {{ form.detail_dream }}
+        </div>
+      </div>
+
+      <div class="form-group row" >
+        {{ form.priority_dream.errors }}
+        <label for="{{ form.must_complete_before.id_for_label }}" class="col-2 col-form-label" >Priority dream</label>
+        <div class="col-10" >
+            {{ form.priority_dream }}
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+{% endblock %}

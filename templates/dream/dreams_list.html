@@ -16,14 +16,14 @@
     <tbody>
       {% for dream in dreams %}
         <tr>
-          <td >{{ dream.my_deream }}</td>
+          <td >{{ dream.my_dream }}</td>
           <td>{{ dream.priority_dream }}</td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
 
-  <a href = {% url 'dreams_new' %}>New</a> 
+  <a href = {% url 'dreams_new' %}>New</a>
 </div>
 
 {% endif %}

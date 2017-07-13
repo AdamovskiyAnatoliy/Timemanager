@@ -39,6 +39,10 @@ def task_detail(request, pk):
     task = get_object_or_404(Note, pk=pk)
     return render(request, 'task/task_detail.html', {'task': task})
 
+def dream_detail(request, pk):
+    dream = get_object_or_404(Dream, pk=pk)
+    return render(request, 'dream/dream_detail.html', {'dream':dream})
+
 
 def task_detail_complete(request, pk):
     task = get_object_or_404(Note, pk=pk)
@@ -57,22 +61,23 @@ def task_new(request):
             task.author = request.user
             task.create_date = timezone.now()
             task.save()
+            return redirect('task_detail', pk=task.pk)
     else:
-        return redirect('task_detail', pk=task.pk)
         form = TaskForm()
-        return render(request, 'task/task_edit.html', {'form' : form})
+    return render(request, 'task/task_edit.html', {'form' : form})
 
 def dreams_new(request):
     if request.method == "POST":
-        form = TaskForm(request.POST)
+        form = DreamForm(request.POST)
         if form.is_valid():
-            dream = form.save(commit=False)
+            dream = form.save()
             dream.author = request.user
             dream.save()
+            print('Hood')
             return redirect('dream_detail', pk=dream.pk)
     else:
         form = DreamForm()
-        return render(request, 'dream/dream_edit.html', {'form' : form})
+    return render(request, 'dream/dream_edit.html', {'form' : form})
 
 
 
