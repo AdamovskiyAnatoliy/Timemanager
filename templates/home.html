@@ -2,9 +2,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Log in to hack your tasks</h1>
+
 <div>
   <a href="{% url 'login' %}"><button  type="button" class="btn btn-success">Log in</button></a>
   <a href="{% url 'signup' %}"><button  type="button" class="btn btn-link">Register</button></a>
 </div>
+
 {% endblock %}

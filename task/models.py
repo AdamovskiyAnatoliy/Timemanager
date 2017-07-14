@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils import timezone
-from datetime import datetime, timedelta
 
 
 class Note(models.Model):
     class Meta:
         ordering = ['must_complete_before']
+
     author = models.ForeignKey('auth.User')
     task = models.CharField(max_length=40)
     create_date = models.DateTimeField(default=timezone.now)
@@ -39,6 +39,7 @@ class Note(models.Model):
 class Dream(models.Model):
     class Meta:
         ordering = ['-priority_dream']
+
     author = models.ForeignKey('auth.User', null=True)
     my_dream = models.CharField(max_length=40)
     detail_dream = models.TextField(blank=True)
