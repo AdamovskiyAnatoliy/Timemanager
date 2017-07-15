@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.widgets import DateTimeInput
 
 from .models import Note, Dream
 
@@ -11,7 +12,12 @@ class TaskForm(forms.ModelForm):
         super(TaskForm, self).__init__(*args, **kwargs)
 
         self.fields['task'].widget.attrs['class'] = 'form-control '
-        self.fields['must_complete_before'].widget.attrs['class'] = 'form-control'
+        self.fields['must_complete_before'].widget = DateTimeInput(attrs={
+            'id': 'datetimepicker',
+            'class': 'input-append date',
+})
+
+
 
 
 class DreamForm(forms.ModelForm):

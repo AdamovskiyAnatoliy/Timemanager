@@ -2,6 +2,8 @@
 
 {% block content %}
 
+
+{% load widget_tweaks %}
 <h1>New post</h1>
 <form method="POST" >
   {% csrf_token %}
@@ -16,11 +18,26 @@
   </div>
 
   <div class="form-group row" >
-    <label for="{{ form.must_complete_before.id_for_label }}" class="col-2 col-form-label" >Date and time</label>
-    <div class="col-10" >{{ form.must_complete_before }}</div>
-      {{ form.must_complete_before.errors }}
+    <label for="time" class="col-2 col-form-label" >Date and time</label>
+    <div class="col-10" >
+      {{ form.must_complete_before}}
+    </div>
+    {{ form.must_complete_before.errors }}
   </div>
+
+  <p>
+  <label for="time">Example temporal</label>
+  <input class="form-control" type="datetime-local" id="time" />
+  </p>
+
   <button type="submit" class="btn btn-success">Save</button>
+
 </form>
 
 {% endblock %}
+
+
+
+<div class="field {{ field|field_type }} {{ field|widget_type }} {{ field.html_name }}">
+    {{ field }}
+</div>
