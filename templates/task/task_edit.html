@@ -3,7 +3,8 @@
 {% block content %}
 
 <h1>New post</h1>
-<form method="POST" >{% csrf_token %}
+<form method="POST" >
+  {% csrf_token %}
   {{ form.non_field_errors }}
 
   <div class="form-group row">
