@@ -5,7 +5,23 @@
   <title>Task</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  <script type="text/javascript" src="/admin/jsi18n/"></script>
+  <script type="text/javascript" src="/static/admin/js/core.js"></script>
+  <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+  <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+  <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+  <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+  <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+  <script type="text/javascript" src="/static/admin/js/calendar.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+
+  <meta name="robots" content="NONE,NOARCHIVE" />
 
 </head>
 <body>
@@ -15,9 +31,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li>
-          {% if user.is_authenticated %}
-            <a href="{% url 'dreams_list' %}"><button type="button" class="btn btn-outline-secondary">Dreams</button></a>
-          {% endif %}
+          <a href="{% url 'dreams_list' %}"><button type="button" class="btn btn-outline-secondary">Dreams</button></a>
           <div class="dropdown-menu" aria-labelledby="dropdown01"></div>
         </li>
       </ul>

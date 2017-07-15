@@ -25,19 +25,8 @@
     {{ form.must_complete_before.errors }}
   </div>
 
-  <p>
-  <label for="time">Example temporal</label>
-  <input class="form-control" type="datetime-local" id="time" />
-  </p>
-
   <button type="submit" class="btn btn-success">Save</button>
 
 </form>
 
 {% endblock %}
-
-
-
-<div class="field {{ field|field_type }} {{ field|widget_type }} {{ field.html_name }}">
-    {{ field }}
-</div>
