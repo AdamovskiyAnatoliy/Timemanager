@@ -1,5 +1,6 @@
 from django import forms
-from django.forms.widgets import DateInput, TimeInput
+from django.forms.widgets import DateTimeInput, TextInput
+from django.forms import ModelForm
 
 from .models import Note, Dream
 
@@ -13,12 +14,14 @@ class TaskForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(TaskForm, self).__init__(*args, **kwargs)
 
-        self.fields['task'].widget.attrs['class'] = 'form-control'
-        self.fields['must_complete_before'].widget = DateInput(attrs={
-            'class':'vDateField', 'id':'id_must_complete_before_0',
-            'name':'must_complete_before_0', 'size':'10', 'type':'text',
+        self.fields['task'].widget= TextInput(attrs={
+            'class':'form-control', 'placeholder':'Exemle: GO shoping'
+            }
+        )
+        self.fields['must_complete_before'].widget = DateTimeInput(attrs={
+            'class':'form-control', 'type':'datetime',
+            'placeholder':'Exemle: 2017-07-16 05:06:06'
             })
-
 
 
 

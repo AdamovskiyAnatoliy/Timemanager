@@ -9,6 +9,7 @@
 <form method="POST" >
   {% csrf_token %}
   {{ form.non_field_errors }}
+  {{ field.label_tag }}<br>
 
   <div class="form-group row">
     {{ form.task.errors }}
@@ -22,6 +23,11 @@
     <label for="date" class="col-2 col-form-label" >Date and time</label>
     <div class="col-10" >
       {{ form.must_complete_before }}
+      <br/>
+      {% if field.help_text %}
+        <small style="color: grey">{{ form.must_complete_before.help_text }}</small>
+        {% endif %}
+
     </div>
     {{ form.must_complete_before.errors }}
   </div>
@@ -31,3 +37,13 @@
 </form>
 
 {% endblock %}
+
+
+{{ field.label_tag }}<br>
+{{ field|add_class:"form-control" }}
+{% if field.help_text %}
+  <small style="color: grey">{{ field.help_text }}</small>
+  {% endif %}
+{% for error in field.errors %}
+  <p style="color: red">{{ error }}</p>
+  {% endfor %}
