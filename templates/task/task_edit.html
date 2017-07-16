@@ -5,6 +5,7 @@
 
 {% load widget_tweaks %}
 <h1>New post</h1>
+{{ form.media }}
 <form method="POST" >
   {% csrf_token %}
   {{ form.non_field_errors }}
@@ -18,9 +19,9 @@
   </div>
 
   <div class="form-group row" >
-    <label for="time" class="col-2 col-form-label" >Date and time</label>
+    <label for="date" class="col-2 col-form-label" >Date and time</label>
     <div class="col-10" >
-      {{ form.must_complete_before}}
+      {{ form.must_complete_before }}
     </div>
     {{ form.must_complete_before.errors }}
   </div>
