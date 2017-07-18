@@ -45,3 +45,16 @@ class Dream(models.Model):
 
     def __str__(self):
         return self.my_deream
+
+
+class TopDream(models.Model):
+    class Meta:
+        ordering = ['-rating']
+    dreams = models.ForeignKey('Dream', null=True)
+    rating = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def add_this_dream(self):
+        pass
+
+    def add_rating(self):
+        pass
