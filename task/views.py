@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import Note, Dream
+from .models import Note, Dream, TopDream
 from .forms import TaskForm, DreamForm
 
 
@@ -87,3 +87,8 @@ def dreams_list(request):
 def dream_detail(request, pk):
     dream = get_object_or_404(Dream, pk=pk)
     return render(request, 'dream/dream_detail.html', {'dream':dream})
+
+
+def top_dream(request):
+    top = Dream.objects.all()
+    return render(request, 'dream/top_dream.html', {'top' : top })
