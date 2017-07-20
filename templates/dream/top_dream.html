@@ -3,5 +3,24 @@
 {% block content %}
 
 <h1>Its TOPS DREAM </h1>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Dream</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dream in dreams %}
+        <tr>
+          <td >{{ dream.my_dream }}</td>
+          <td></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
 
 {% endblock content %}
