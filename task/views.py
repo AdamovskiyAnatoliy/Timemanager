@@ -81,7 +81,7 @@ def dreams_new(request):
     return render(request, 'dream/dream_edit.html', {'form' : form})
 
 def dreams_list(request):
-    dreams = Dream.objects.filter(complete_value=False, author=request.user)
+    dreams = Dream.objects.filter(author=request.user)
     return render(request, 'dream/dreams_list.html', {'dreams' : dreams})
 
 def dream_detail(request, pk):
