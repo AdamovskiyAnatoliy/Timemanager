@@ -52,9 +52,14 @@ class TopDream(models.Model):
         ordering = ['-rating']
     dreams = models.ForeignKey('Dream', null=True)
     rating = models.DecimalField(max_digits=6, decimal_places=2)
+    in_top = models.BooleanField(default=False)
 
     def add_this_dream(self):
-        pass
+        self.in_top = True
+        self.save()
+        return ''
 
     def add_rating(self):
-        pass
+        self.rating += 1
+        self.save()
+        return ''
