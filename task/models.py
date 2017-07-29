@@ -42,15 +42,6 @@ class Dream(models.Model):
     my_dream = models.CharField(max_length=40)
     detail_dream = models.TextField(blank=True)
     priority_dream = models.DecimalField(max_digits=4, decimal_places=2)
-
-    def __str__(self):
-        return self.my_deream
-
-
-class TopDream(models.Model):
-    class Meta:
-        ordering = ['-rating']
-    dreams = models.ForeignKey('Dream', null=True)
     rating = models.DecimalField(max_digits=6, decimal_places=2)
     in_top = models.BooleanField(default=False)
 
@@ -63,3 +54,6 @@ class TopDream(models.Model):
         self.rating += 1
         self.save()
         return ''
+
+    def __str__(self):
+        return self.my_deream

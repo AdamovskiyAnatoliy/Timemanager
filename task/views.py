@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import Note, Dream, TopDream
+from .models import Note, Dream
 from .forms import TaskForm, DreamForm
 
 
