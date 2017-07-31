@@ -90,5 +90,5 @@ def dream_detail(request, pk):
 
 
 def top_dream(request):
-    dreams = Dream.objects.filter(in_top)
+    dreams = Dream.objects.filter(in_top=True)
     return render(request, 'dream/top_dream.html', {'dreams' : dreams })

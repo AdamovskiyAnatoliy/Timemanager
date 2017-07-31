@@ -42,7 +42,7 @@ class Dream(models.Model):
     my_dream = models.CharField(max_length=40)
     detail_dream = models.TextField(blank=True)
     priority_dream = models.DecimalField(max_digits=4, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2)
+    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     in_top = models.BooleanField(default=False)
 
     def add_this_dream(self):
