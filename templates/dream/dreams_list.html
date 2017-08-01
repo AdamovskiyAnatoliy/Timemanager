@@ -19,7 +19,7 @@
           <tr>
             <td >{{ dream.my_dream }}</td>
             <td>{{ dream.priority_dream }}</td>
-            <td><a href="/"><button type="button" class="btn btn-link">Add in top</button></a></td>
+            <td><a href="{% url 'dream_go_top' %}"><button type="button" class="btn btn-link">Add in top</button></a></td>
           </tr>
         {% endfor %}
       </tbody>

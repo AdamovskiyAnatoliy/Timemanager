@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^dreams_list/$', views.dreams_list, name='dreams_list'),
     url(r'^dreams_new/$', views.dreams_new, name='dreams_new'),
     url(r'^dream_detail/(?P<pk>[0-9]+)$', views.dream_detail, name='dream_detail'),
-    url(r'^top_dream/$', views.top_dream, name='top_dream'), 
+    url(r'^top_dream/$', views.top_dream, name='top_dream'),
+    url(r'^dream_go_top/', views.dream_go_top, name='dream_go_top'),
 
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
