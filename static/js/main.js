@@ -17,6 +17,5 @@ function timer(a, b){
         document.getElementById(b).innerHTML = ++days + "d " + ++hours + "h "
         + ++minutes + "m " + ++seconds + "s ";
       }
-
     }, 1000);
 }
