@@ -56,4 +56,4 @@ class Dream(models.Model):
         return ''
 
     def __str__(self):
-        return self.my_deream
+        return self.my_dream

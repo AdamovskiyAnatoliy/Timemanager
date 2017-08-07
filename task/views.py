@@ -66,7 +66,6 @@ def task_edit(request, pk):
         form = TaskForm(instance=task)
     return render(request, 'task/task_edit.html', {'form': form})
 
-
 def dreams_new(request):
     if request.method == "POST":
         form = DreamForm(request.POST)
@@ -87,7 +86,6 @@ def dreams_list(request):
 def dream_detail(request, pk):
     dream = get_object_or_404(Dream, pk=pk)
     return render(request, 'dream/dream_detail.html', {'dream':dream})
-
 
 def top_dream(request):
     dreams = Dream.objects.filter(in_top=True)
