@@ -126,3 +126,5 @@ venv
 src
 db.sqlite3
 .DS_Store
+secrets.json
+config/settings/secrets.json
